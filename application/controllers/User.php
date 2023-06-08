@@ -8,7 +8,7 @@ class User extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('m_user');
+        $this->load->model('M_user');
         
     }
 
@@ -17,7 +17,7 @@ class User extends CI_Controller {
     {
         $data = array(
             'title' => 'User',
-            'user' => $this->m_user->get_all_data(),
+            'user' => $this->M_user->get_all_data(),
             'isi' => 'v_user',
         );  
         $this->load->view('layout/v_wrapper_backend', $data, FALSE);
@@ -42,5 +42,5 @@ class User extends CI_Controller {
     }
 }
 
-/* End of file Controllername.php */
+/* End of file User.php */
 

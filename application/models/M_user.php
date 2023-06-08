@@ -9,10 +9,9 @@ class M_user extends CI_Model {
         $this->db->select('*');
         $this->db->from('tbl_user');
         $this->db->order_by('id_user', 'desc');
-        $this->db->get()->result();
+       return $this->db->get()->result();
         
-        
-        
+      
         
     }
 

@@ -32,9 +32,9 @@
       <?php
       echo validation_errors('<div class="alert alert-warning alert-dismissible">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>',' </div>');
+      <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>', '</div>');
 
-      if ($this->session->set_flashdata('error')) {
+      if ($this->session->flashdata('error')) {
         echo '<div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h5><i class="icon fas fa-ban"></i> Alert!</h5>';
