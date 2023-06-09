@@ -12,16 +12,16 @@ class User_login
         $this->ci->load->model('M_auth');
     } 
     
-    public function login($username,$password)
+    public function login($username, $password)
     {
-        $cek = $this->ci->M_auth->login_user($username,$password);
+        $cek = $this->ci->M_auth->login_user($username, $password);
         if ($cek) {
            $nama_user = $cek->nama_user;
            $username = $cek->username;
            $level_user = $cek->level_user;
            //buat session
           $this->ci->session->set_userdata('username', $username);
-          $this->ci->session->set_userdata('password', $password);
+          $this->ci->session->set_userdata('nama_user', $nama_user);
           $this->ci->session->set_userdata('level_user', $level_user);
             redirect('admin');
         } else {

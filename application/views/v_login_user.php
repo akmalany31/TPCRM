@@ -38,15 +38,15 @@
         echo '<div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h5><i class="icon fas fa-ban"></i> Alert!</h5>';
-        echo $this->session->set_flashdata('error');
+        echo $this->session->flashdata('error');
         echo '</div>';
       }
 
-      if ($this->session->set_flashdata('pesan')) {
-        echo 'div class="alert alert-success alert-dismissible">
+      if ($this->session->flashdata('pesan')) {
+        echo '<div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h5><i class="icon fas fa-check"></i> Sukses </h5>';
-        echo $this->session->set_flashdata('pesan');
+        echo $this->session->flashdata('pesan');
         echo '</div>';
       }
 

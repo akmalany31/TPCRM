@@ -1,9 +1,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-    <img src="<?= base_url() ?>assets/slider/gambar.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+    <a href="<?= base_url('admin') ?>" class="brand-link">
+      <img src="<?= base_url() ?>assets/slider/gambar.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Halaman Admin</span>
     </a>
 
@@ -15,7 +14,7 @@
           <img src="<?= base_url() ?>assets/slider/user.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?= $this->session->userdata('nama_user') ?></a>
         </div>
       </div>
 
@@ -24,7 +23,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -33,14 +32,18 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('kategori') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'kategori') {
+                                                                    echo "active";
+                                                                  } ?>">
               <i class="nav-icon fas fa-list"></i>
               <p> Kategori </p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('barang') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'barang') {
+                                                                  echo "active";
+                                                                } ?>">
               <i class="nav-icon fas fa-list"></i>
               <p> Barang </p>
             </a>
@@ -78,9 +81,9 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?= base_url('User') ?>" class="nav-link <?php if($this->uri->segment(1) =='user') {
-              echo "active";
-            } ?>">
+            <a href="<?= base_url('User') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'user') {
+                                                                echo "active";
+                                                              } ?>">
               <i class="nav-icon fas fa-users"></i>
               <p> User</p>
             </a>
@@ -124,5 +127,3 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-
-        
