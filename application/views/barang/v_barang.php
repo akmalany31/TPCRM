@@ -24,12 +24,12 @@
       <table class="table table-bordered" id="example1">
         <thead class="text-center">
           <tr>
-            <th>No</th>
-            <th>Nama Barang</th>
-            <th>Kategori</th>
-            <th>Harga</th>
-            <th>Gambar</th>
-            <th>Action</th>
+            <th width="50px">No</th>
+            <th width="150px">Nama Barang</th>
+            <th width="150px">Kategori</th>
+            <th width="150px">Harga</th>
+            <th width="150px">Gambar</th>
+            <th width="150px">Action</th>
           </tr>
         </thead>
 
@@ -38,7 +38,10 @@
           foreach ($barang as $key => $value) { ?>
             <tr>
               <td class="text-center"><?= $no++; ?></td>
-              <td class="text-center"><?= $value->nama_barang ?></td>
+              <td>
+                <?= $value->nama_barang ?><br>
+                Berat (gr) : <?= $value->berat ?>
+              </td>
               <td class="text-center"><?= $value->nama_kategori ?></td>
               <td class="text-center">Rp. <?= number_format($value->harga, 0) ?></td>
               <td class="text-center"><img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" width="150px"></td>

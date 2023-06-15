@@ -1,10 +1,10 @@
 <div class="col-md-12">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Data  Gambar Barang</h3>
+            <h3 class="card-title">Data Gambar Barang</h3>
 
             <div class="card-tools">
-                
+
             </div>
             <!-- /.card-tools -->
         </div>
@@ -34,16 +34,18 @@
                     <?php $no = 1;
                     foreach ($gambarbarang as $key => $value) { ?>
                         <tr>
-                        <td class="text-center"><?= $no++; ?></td>
-                        <td><?= $value->nama_barang ?></td>
-                        <td class="text-center"><img src="<?=  base_url('assets/gambar/'. $value->gambar) ?>" width="100px"></td>
-                        <td class="text-center"><span class="badge bg-primary"><h5><?= $value->total_gambar ?></h5></span></td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-success btn-sm"><i class="fas fa-plus"></i>Add Gambar</a>
-                        </td>
-                    </tr>
-                        <?php } ?>
-    
+                            <td class="text-center"><?= $no++; ?></td>
+                            <td><?= $value->nama_barang ?></td>
+                            <td class="text-center"><img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" width="100px"></td>
+                            <td class="text-center"><span class="badge bg-primary">
+                                    <h5><?= $value->total_gambar ?></h5>
+                                </span></td>
+                            <td class="text-center">
+                                <a href="<?= base_url('Gambarbarang/add/' . $value->id_barang) ?>" class="btn btn-success btn-sm"><i class="fas fa-plus"></i>Add Gambar</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+
                 <tbody>
 
                 </tbody>
