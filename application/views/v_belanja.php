@@ -1,6 +1,17 @@
 <div class="card card-solid">
     <div class="card-body pb-0">
         <div class="row">
+        <div class="col-sm12">
+        <?php
+            if ($this->session->flashdata('pesan')) {
+                echo '<div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i>';
+                echo $this->session->flashdata('pesan');
+                echo '</h5></div>';
+            }
+            ?>
+        </div>
             <div class="col-sm-12">
                 <?php
 
@@ -69,10 +80,10 @@
                     <div class="col-sm-4">
                         <button type="submit" class="btn btn-primary btn-flat">Update Cart</i></button>
                         <a href="<?= base_url('belanja/clear') ?>" class="btn btn-danger btn-flat">Clear Cart</i></a>
-                        <a href="<?= base_url() ?>" class="btn btn-success btn-flat">Check Out</i></a>
+                        <a href="<?= base_url('belanja/cekout') ?>" class="btn btn-success btn-flat">Check Out</i></a>
+                        <?php echo form_close(); ?>
                     </div>
                 </div><br>
-                <?php echo form_close(); ?>
             </div>
         </div>
     </div>

@@ -48,24 +48,26 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item">
         <?php if ($this->session->userdata('email') == "") { ?>
-          <a class="nav-link" href="<?= base_url('pelanggan/register') ?>">
+          <a class="nav-link" href="<?= base_url('pelanggan/login') ?>">
             <span class="brand-text font-weight-light">Login</span>
             <img src="<?= base_url() ?>assets/slider/user.jpeg" class="brand-image img-circle elevation-3" style="opacity: .8">
           </a>
         <?php  } else { ?>
           <a class="nav-link" data-toggle="dropdown" href="#">
-            <span class="brand-text font-weight-light">Nama Pelanggan</span>
-            <img src="<?= base_url() ?>assets/slider/user.jpeg" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light"><?=  $this->session->userdata('nama_pelanggan') ?></span>
+            <img src="<?= base_url('assests/foto/'.$this->session->userdata('foto')) ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
+            <a href="<?= base_url('pelanggan/akun') ?>" class="dropdown-item">
+              <i class="fas fa-user mr-2"></i> Akun saya
+            </a>
+            <a href="<?= base_url('pesanan_saya') ?>" class="dropdown-item">
+              <i class="fas fa-shopping-cart mr-2"></i> Pesanan Saya
             </a>
 
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            <a href="<?= base_url('pelanggan/logout') ?>" class="dropdown-item dropdown-footer">Log Out</a>
           </div>
         <?php } ?>
       </li>

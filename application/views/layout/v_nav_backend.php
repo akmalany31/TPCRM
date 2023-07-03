@@ -25,7 +25,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="<?= base_url('admin') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'admin') {
+            <a href="<?= base_url('admin') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'admin' and $this->uri->segment(2)=="") {
                                                                   echo "active";
                                                                 } ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -60,28 +60,20 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
+          <li class="nav-item">
+            <a href="<?= base_url('admin/pesanan_masuk') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'pesanan_masuk'and $this->uri->segment(1) =='admin' ) {
+                                                                        echo "active";
+                                                                      } ?>">
+              <i class="nav-icon fas fa-download"></i>
+              <p>Pesanan Masuk </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?= base_url('laporan') ?>" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p> Laporan </p>
+            </a>
           </li>
 
           <li class="nav-item">
