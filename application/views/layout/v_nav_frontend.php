@@ -3,7 +3,7 @@
   <div class="container">
     <a href="<?= base_url() ?>" class="navbar-brand">
       <li class="fas fa-store text-primary"></li>
-      <span class="brand-text font-weight-light"><b>Toko Online</b></span>
+      <span class="brand-text font-weight-light"><b>Hikmah Furniture Antapani</b></span>
     </a>
 
     <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,7 @@
 
           </ul>
         </li>
+        <!-- Right navbar links 
         <li class="nav-item">
           <a href="#" class="nav-link">Contact</a>
         </li>
@@ -38,6 +39,7 @@
             <li><a href="#" class="dropdown-item">Some other action</a></li>
           </ul>
         </li>
+        -->
       </ul>
 
 
@@ -54,8 +56,8 @@
           </a>
         <?php  } else { ?>
           <a class="nav-link" data-toggle="dropdown" href="#">
-            <span class="brand-text font-weight-light"><?=  $this->session->userdata('nama_pelanggan') ?></span>
-            <img src="<?= base_url('assests/foto/'.$this->session->userdata('foto')) ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light"><?= $this->session->userdata('nama_pelanggan') ?></span>
+            <img src="<?= base_url('assests/foto/' . $this->session->userdata('foto')) ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <div class="dropdown-divider"></div>

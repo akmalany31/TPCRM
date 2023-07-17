@@ -17,6 +17,8 @@ class Admin extends CI_Controller
             'title' => 'Dashboard',
             'total_barang' => $this->M_admin->total_barang(),
             'total_kategori' => $this->M_admin->total_kategori(),
+            'total_pelanggan' => $this->M_admin->total_pelanggan(),
+            'total_transaksi' => $this->M_admin->total_transaksi(),
             'isi' => 'v_admin',
         );
         $this->load->view('layout/v_wrapper_backend', $data, FALSE);
@@ -87,11 +89,10 @@ class Admin extends CI_Controller
             'pesanan_diproses' => $this->M_pesanan_masuk->pesanan_diproses(),
             'pesanan_dikirim' => $this->M_pesanan_masuk->pesanan_dikirim(),
             'pesanan_selesai' => $this->M_pesanan_masuk->pesanan_selesai(),
-            
+
             'isi' => 'v_pesanan_masuk',
         );
         $this->load->view('layout/v_wrapper_backend', $data, FALSE);
-   
     }
 
     public function proses($id_transaksi)
@@ -116,5 +117,4 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('pesan', 'Pesanan Berhasil Di Kirim');
         redirect('admin/pesanan_masuk');
     }
-
 }
