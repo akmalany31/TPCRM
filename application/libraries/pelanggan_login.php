@@ -10,6 +10,7 @@ class Pelanggan_login
     {
         $this->ci =& get_instance();
         $this->ci->load->model('M_auth');
+        $this->ci->load->model('M_pelanggan');
     } 
     
     public function login($email, $password)
@@ -19,11 +20,13 @@ class Pelanggan_login
             $id_pelanggan = $cek->id_pelanggan;
            $nama_pelanggan = $cek->nama_pelanggan;
            $email = $cek->email;
+           $password = $cek->password;
            $foto = $cek->foto;
            //buat session
            $this->ci->session->set_userdata('id_pelanggan', $id_pelanggan);
            $this->ci->session->set_userdata('nama_pelanggan', $nama_pelanggan);
           $this->ci->session->set_userdata('email', $email);
+          $this->ci->session->set_userdata('password', $password);
           $this->ci->session->set_userdata('foto', $foto);
         redirect('home');
         } else {

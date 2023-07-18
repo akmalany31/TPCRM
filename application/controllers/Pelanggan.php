@@ -7,8 +7,10 @@ class Pelanggan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->ci =& get_instance();
         $this->load->model(('M_pelanggan'));
         $this->load->model(('M_auth'));
+        $this->load->helper('url', 'form');
     }
 
     public function register()
@@ -78,6 +80,7 @@ class Pelanggan extends CI_Controller
                 'required' => '%s Harus Diisi'
             )
         );
+
         $this->form_validation->set_rules(
             'email',
             'Email',
@@ -87,11 +90,30 @@ class Pelanggan extends CI_Controller
             )
         );
 
+        $this->form_validation->set_rules(
+            'password',
+            'Password',
+            'required',
+            array(
+                'required' => '%s Harus Diisi!'
+            )
+        );
+
+        $this->form_validation->set_rules(
+            'ulangi_password',
+            'Ulangi Password',
+            'required|matches[password]',
+            array(
+                'required' => '%s Harus Diisi!',
+                'matches' => 'Password tidak sama!'
+            )
+        );
+
         if ($this->form_validation->run() == FALSE) {
 
             $data = array(
                 'title' => 'Akun Saya',
-                'profile' => $this->M_pelanggan->edit($data),
+                // 'profile' => $this->M_pelanggan->edit($data),
                 'isi' => 'v_akun_saya',
             );
 
@@ -99,12 +121,43 @@ class Pelanggan extends CI_Controller
         } else {
 
             // $pelanggan = $this->M_pelanggan->data_akun($id_pelanggan);
+            $config['upload_path'] = './assets/foto/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|ico';
+            $config['max_size']     = '4000';
+            $this->upload->initialize($config);
+            $field_name = "foto";
+
+            if($this->upload->do_upload($field_name)) {
+                $upload_data = array('uploads' => $this->upload->data());
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = './assets/foto/' . $upload_data['uploads']['file_name'];
+                $this->load->library('image_lib', $config);
+            }
+
             $data = array(
-                'id_pelanggan' => $id_pelanggan,
+                'id_pelanggan' => $this->input->post('id_pelanggan'),
                 'nama_pelanggan' => $this->input->post('nama_pelanggan'),
                 'email' => $this->input->post('email'),
+                'password' => $this->input->post('password'),
+                'foto' => $upload_data['uploads']['file_name'],
             );
-            $this->M_admin->edit($data);
+
+            if(is_null($data['foto'])){
+                $data = array(
+                    'id_pelanggan' => $this->input->post('id_pelanggan'),
+                    'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+                    'email' => $this->input->post('email'),
+                    'password' => $this->input->post('password'),
+                );
+            } else {
+                $this->ci->session->set_userdata('foto', $data['foto']);
+            }          
+
+            $this->ci->session->set_userdata('nama_pelanggan', $data['nama_pelanggan']);
+            $this->ci->session->set_userdata('email', $data['email']);
+            $this->ci->session->set_userdata('password', $data['password']);
+
+            $this->M_pelanggan->edit($data);
             $this->session->set_flashdata('pesan', 'Akun Pelanggan Berhasil Diupdate');
             redirect('pelanggan/profile');
         }
@@ -146,7 +199,7 @@ class Pelanggan extends CI_Controller
         $this->pelanggan_login->proteksi_halaman();
         $data = array(
             'title' => 'Akun Saya',
-            //'' => $this->M_pelanggan->register(),
+            // 'profile' => $this->M_auth->login_pelanggan(),
             'isi' => 'v_akun_saya',
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
